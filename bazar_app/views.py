@@ -14,6 +14,14 @@ class HomeView(ListView):
         context = super().get_context_data(**kwargs)
         context["banners"] = Product.objects.filter(
             published_at__isnull=False, status="active"
+        ).order_by("-published_at")[:3]
+        context["products"] = Product.objects.filter(
+            published_at__isnull=False, status="active"
         ).order_by("-published_at")
 
-        return context  
+
+        return context
+
+class ProductDetailView(TemplateView):
+
+    template_name = "product_detail.html"

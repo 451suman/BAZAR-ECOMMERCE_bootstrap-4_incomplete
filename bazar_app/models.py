@@ -32,6 +32,7 @@ class Product(TimeStampModel):
     published_at = models.DateTimeField(null=True, blank =True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tag = models.ManyToManyField(Tag)
+    price = models.DecimalField(max_digits= 9999999, decimal_places=2, default=0.00)
 
     def __str__(self):
         return self.title
