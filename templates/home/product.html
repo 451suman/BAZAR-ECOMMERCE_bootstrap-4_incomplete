@@ -18,9 +18,14 @@
         <!-- single product -->
         <div class="col-lg-3 col-md-6 ">
             <div class="single-product">
-                <img class="img-fluid" src="{{product.featured_image.url}}" height="255px" width="255px" alt="">
+                <a href="{% url 'productdetail' product.id %}">
+                    <img class="img-fluid" src="{{product.featured_image.url}}"
+                        style="width: 255px !important; height: 255px !important;" alt="">
+                </a>
                 <div class="product-details">
-                    <h6>{{product.title|truncatechars:120}}</h6>
+                    <a href="{% url 'productdetail' product.id %}">
+                        <h6>{{product.title|truncatechars:120}}</h6>
+                    </a>
                     <div class="price">
                         <h6>{{product.price}}</h6>
                         <h6 class="l-through">$210.00</h6>
@@ -35,11 +40,8 @@
                             <span class="lnr lnr-heart"></span>
                             <p class="hover-text">Wishlist</p>
                         </a>
-                        <a href="" class="social-info">
-                            <span class="lnr lnr-sync"></span>
-                            <p class="hover-text">compare</p>
-                        </a>
-                        <a href="" class="social-info">
+                        
+                        <a href="{% url 'productdetail' product.id %}" class="social-info">
                             <span class="lnr lnr-move"></span>
                             <p class="hover-text">view more</p>
                         </a>

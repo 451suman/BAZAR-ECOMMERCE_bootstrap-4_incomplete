@@ -8,7 +8,7 @@ from bazar_app.models import Product
 class HomeView(ListView):
     model = Product
     template_name = "home.html"
-    context_object_name = "products"  # Changed to plural to represent multiple Products
+    context_object_name = "products" 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,6 +22,12 @@ class HomeView(ListView):
 
         return context
 
-class ProductDetailView(TemplateView):
-
+class ProductDetailView(DetailView):
+    model = Product
     template_name = "product_detail.html"
+    context_object_name = "product"
+
+    def get_queryset(self):
+        query = super().get_queryset()
+        query = query.filter(published_at__isnull=False, status="active")
+        return query

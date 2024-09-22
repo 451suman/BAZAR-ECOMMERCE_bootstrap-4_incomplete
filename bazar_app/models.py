@@ -27,6 +27,7 @@ class Product(TimeStampModel):
     ]
     title = models.CharField(max_length=200)
     content = models.TextField()
+    description = models.TextField()
     featured_image = models.ImageField(upload_to="post_images/%Y/%m/%d", blank=False)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="active")
     published_at = models.DateTimeField(null=True, blank =True)

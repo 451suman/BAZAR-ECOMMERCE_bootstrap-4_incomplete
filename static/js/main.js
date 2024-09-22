@@ -54,8 +54,8 @@ $(document).ready(function(){
         autoplayTimeout: 5000,
         loop:true,
         nav:true,
-        navText: ["<span>Previous</span>", "<span>Next</span>"],
-                dots:false
+        navText:["<img src='img/banner/prev.png'>","<img src='img/banner/next.png'>"],
+        dots:false
     });
 
     /*=================================
@@ -67,7 +67,7 @@ $(document).ready(function(){
         autoplayTimeout: 5000,
         loop:true,
         nav:true,
-        navText: ["<span aria-label='Previous'>previous</span>", "<span aria-label='Next'>next</span>"],
+        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
         dots:false
     });
 
@@ -82,23 +82,19 @@ $(document).ready(function(){
       nav:false,
       dots:true
     });
+    
     /*=================================
     Javascript for exclusive area carousel
     ==================================*/
-    
-    $(document).ready(function() {
-      $(".active-exclusive-product-slider").owlCarousel({
-          items: 1,
-          autoplay: false,
-          autoplayTimeout: 5000,
-          loop: true,
-          nav: true,
-          navText: ["<span aria-label='Previous'>previous</span>", "<span aria-label='Next'>next</span>"],
-          dots: false
-      });
-  });
-  
-
+    $(".active-exclusive-product-slider").owlCarousel({
+        items:1,
+        autoplay:false,
+        autoplayTimeout: 5000,
+        loop:true,
+        nav:true,
+        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
+        dots:false
+    });
 
     //--------- Accordion Icon Change ---------//
 

@@ -8,6 +8,6 @@ from django_summernote.admin import SummernoteModelAdmin
 admin.site.register([Category, Tag])
 
 class ProductAdmin(SummernoteModelAdmin):
-    summernote_fields = ('content',)
+    summernote_fields = ('content','description')
 
 admin.site.register(Product, ProductAdmin)
