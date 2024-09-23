@@ -1,0 +1,41 @@
+{% load static %}
+<section class="lattest-product-area pb-40 category-list"
+    style="background-color: rgba(231, 231, 231, 0.329); padding: 10px;">
+    <div class="row">
+        {% for product in products %}
+        <!-- single product -->
+        <div class="col-lg-4 col-md-6">
+            <div class="single-product">
+                <a href="{% url 'productdetail' product.id %}">
+                    <img class="img-fluid" src="{{ product.featured_image.url }}" style="aspect-ratio: 61/65;"
+                        alt="{{product.title}}">
+                </a>
+                <div class="product-details">
+                    <a href="{% url 'productdetail' product.id %}">
+                        <h6>{{product.title|truncatechars:100}}</h6>
+                    </a>
+                    <div class="price">
+                        <h6>Rs. {{product.price}}</h6>
+
+                    </div>
+                    <div class="prd-bottom" style="bottom: 0px; left: 0px;">
+
+                        <a href="" class="social-info">
+                            <span class="ti-bag"></span>
+                            <p class="hover-text">add to bag</p>
+                        </a>
+                        <a href="" class="social-info">
+                            <span class="lnr lnr-heart"></span>
+                            <p class="hover-text">Wishlist</p>
+                        </a>
+                        <a href="{% url 'productdetail' product.id %}" class="social-info">
+                            <span class="lnr lnr-move"></span>
+                            <p class="hover-text">view more</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

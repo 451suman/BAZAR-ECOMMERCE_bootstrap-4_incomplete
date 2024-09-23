@@ -32,6 +32,19 @@ class ProductsListView(ListView):
         query = super().get_queryset()
         query = Product.objects.filter(published_at__isnull=False, status="active")
         return query
+    
+    
+class ProductsListView(ListView):
+    model = Product
+    template_name = "products.html"
+    context_object_name = "products"
+    paginate_by = 6
+    
+    def get_queryset(self):
+        query = super().get_queryset()
+        query = Product.objects.filter(published_at__isnull=False, status="active")
+        return query
+
 
 
 
