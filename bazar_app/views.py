@@ -22,6 +22,19 @@ class HomeView(ListView):
 
         return context
 
+
+class ProductsListView(ListView):
+    model = Product
+    template_name = "products.html"
+    context_object_name = "products"
+    
+    def get_queryset(self):
+        query = super().get_queryset()
+        query = Product.objects.filter(published_at__isnull=False, status="active")
+        return query
+
+
+
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product_detail.html"
@@ -29,5 +42,6 @@ class ProductDetailView(DetailView):
 
     def get_queryset(self):
         query = super().get_queryset()
-        query = query.filter(published_at__isnull=False, status="active")
+        query = Product.objects.filter(published_at__isnull=False, status="active")
         return query
+    

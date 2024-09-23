@@ -1,43 +1,103 @@
 {% load static %}
-<!-- start banner Area -->
-<section class="banner-area " style="padding-top:30px">
-	<div class="container">
-		<div class="row fullscreen align-items-center justify-content-start">
-			<div class="col-lg-12">
-				<div class="active-banner-slider owl-carousel">
 
-					{% for banner in banners %}
-					<!-- single-slide -->
+<!DOCTYPE html>
+<html lang="en">
 
-					<div class="row single-slide align-items-center d-flex">
-						<div class="col-lg-5 col-md-6">
-							<div class="banner-content">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Swiper Example</title>
 
+	<style>
+		.swiper {
+			margin-top: 12rem;
+			width: 73rem;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			overflow: hidden;
+			padding: 0;
+			z-index: 1;
+			display: block;
+		}
 
-								<div class="add-bag d-flex align-items-center">
-									<a class="link-primary" href="{% url 'productdetail' banner.id %}">
-										<h4>{{banner.title}}</h4>
-										<h3> Rs. {{banner.price}}</h3>
-									</a>
-									
-								</div>
-								<a href="{% url 'productdetail' banner.id %}" class="genric-btn primary">View Detail</a>
+		/* .swiper-button-prev,
+		.swiper-button-next {
+			background: #cf784d;
+			color: #fff;
+			padding: 2rem;
+			border-radius: 50%;
+		} */
 
-							</div>
-						</div>
-						<div class="col-lg-7">
-							<div class="banner-img">
-								<a class="link-primary" href="{% url 'productdetail' banner.id %}">
-									<img class="img-fluid" src="{{ banner.featured_image.url}}"
-										style="height:500px !important; width:500px !important;" alt="">
-								</a>
+		.banner-content {
+			color: #333;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="row single-slide align-items-center d-flex">
+					<div class="col-lg-5 col-md-6">
+						<div class="banner-content">
+							<h1>Nike New <br>Collection!</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation.</p>
+							<div class="add-bag d-flex align-items-center">
+								<a class="add-btn" href="#"><span class="lnr lnr-cross"></span></a>
+								<span class="add-text text-uppercase">Add to Bag</span>
 							</div>
 						</div>
 					</div>
-					{% endfor %}
+					<div class="col-lg-7">
+						<div class="banner-img">
+							<img class="img-fluid" src="{% static 'img/banner/banner-img.png' %}" alt="Banner Image">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="row single-slide align-items-center d-flex">
+					<div class="col-lg-5 col-md-6">
+						<div class="banner-content">
+							<h1>2 Nike New <br>Collection!</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation.</p>
+							<div class="add-bag d-flex align-items-center">
+								<a class="add-btn" href="#"><span class="lnr lnr-cross"></span></a>
+								<span class="add-text text-uppercase">Add to Bag</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7">
+						<div class="banner-img">
+							<img class="img-fluid" src="{% static 'img/banner/banner-img.png' %}" alt="Banner Image">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-scrollbar"></div>
 	</div>
-</section>
-<!-- End banner Area -->
+
+
+	<script>
+		const swiper = new Swiper('.swiper', {
+			direction: 'horizontal',
+			loop: true,
+			autoplay: {
+				delay: 5000,
+			},
+		});
+	</script>
+</body>
+
+</html>
