@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView, View, DetailView
 
-from bazar_app.models import Product
+from bazar_app.models import Category, Product, Tag
 
 
 # Create your views here.
@@ -85,4 +85,25 @@ class TagListView(ListView):
             status="active",
             tag__id=self.kwargs["tid"],
         )
+        return query
+
+
+class CategoryViewListPage(ListView):
+    model = Category
+    template_name = "category_Tag_listpage.html"
+    context_object_name="categorieslists"
+
+    def get_queryset(self):
+        query= super().get_queryset()
+        query = Category.objects.all().order_by("name")
+        return query
+    
+class TagViewListPage(ListView):
+    model = Tag
+    template_name = "category_Tag_listpage.html"
+    context_object_name="categorieslists"
+
+    def get_queryset(self):
+        query= super().get_queryset()
+        query = Tag.objects.all().order_by("name")
         return query

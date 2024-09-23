@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<section class="banner-area organic-breadcrumb">
+  <div class="container">
+    <div
+      class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end"
+    >
+      <div class="col-first">
+        <h1>Category page</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {% for categorieslist in categorieslists%}
+      <a href="{% url 'product-by-category' categorieslist.id %}" class="genric-btn primary" style="margin: 5px">
+        {{categorieslist.name}}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

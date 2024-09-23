@@ -2,6 +2,7 @@
 <section class="lattest-product-area pb-40 category-list"
     style="background-color: rgba(231, 231, 231, 0.329); padding: 10px;">
     <div class="row">
+        {% if products %}
         {% for product in products %}
         <!-- single product -->
         <div class="col-lg-4 col-md-6">
@@ -37,5 +38,13 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Products is unavailable.</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
     </div>
 </section>
