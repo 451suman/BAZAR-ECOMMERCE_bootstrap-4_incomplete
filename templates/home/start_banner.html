@@ -11,12 +11,11 @@
 						<div class="col-lg-5 col-md-6">
 							<div class="banner-content">
 								<a href="{% url 'productdetail' banner.id %}">
-									<h4>{{banner.title}}</h4>
+									<h3 class="text-warning">{{banner.title}}</h3>
 								</a>
-								<p>{{banner.content|safe|truncatechars:250}}</p>
+
 								<div class="add-bag d-flex align-items-center">
 									<a class="genric-btn primary circle" href="">View Details</a>
-									
 								</div>
 							</div>
 						</div>

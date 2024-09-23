@@ -1,17 +1,13 @@
-<div class="common-filter">
-    <div class="head">Brands</div>
-    <form action="#">
-        <ul>
-            <li class="filter-list"><input class="pixel-radio" type="radio" id="apple"
-                    name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-            <li class="filter-list"><input class="pixel-radio" type="radio" id="asus"
-                    name="brand"><label for="asus">Asus<span>(29)</span></label></li>
-            <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee"
-                    name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
-            <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax"
-                    name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
-            <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung"
-                    name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
+<div class="sidebar-categories">
+        <div class="head">Browse Tags</div>
+        <ul class="main-categories">
+            {% for tag in tags %}
+            <li class="main-nav-list">
+                <a href="{% url 'product-by-tag' tag.id %}" >
+                    <span class="lnr lnr-arrow-right"></span>{{ tag.name }}<span class="number">(53)</span>
+                </a>
+            </li>
+            {% endfor %}
         </ul>
-    </form>
-</div>
+    </div>
+    

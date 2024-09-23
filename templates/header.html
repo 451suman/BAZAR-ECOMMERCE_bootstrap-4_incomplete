@@ -20,7 +20,7 @@
 						<li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="{% url 'product-lists' %}">Products</a></li>
 						<!-- Category Dropdown -->
-						<!-- Category Dropdown -->
+
 						<li class="nav-item submenu dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">
@@ -29,12 +29,28 @@
 							<ul class="dropdown-menu">
 								{% for category in categories %}
 								<li class="nav-item">
-									<a class="nav-link" href="#">{{ category.name }}</a>
+									<a class="nav-link" href="{% url 'product-by-category' category.id %}">{{ category.name }}</a>
 								</li>
 								{% endfor %}
 							</ul>
 						</li>
+						<!-- Category Dropdown -->
+						<!-- Tags Dropdown -->
 
+						<li class="nav-item submenu dropdown">
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">
+								Tags
+							</a>
+							<ul class="dropdown-menu">
+								{% for tag in tags %}
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'product-by-tag' tag.id %}">{{ tag.name }}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</li>
+						<!-- Tags Dropdown -->
 						<li class="nav-item submenu dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Pages</a>

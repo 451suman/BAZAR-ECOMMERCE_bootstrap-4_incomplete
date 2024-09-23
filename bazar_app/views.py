@@ -8,7 +8,7 @@ from bazar_app.models import Product
 class HomeView(ListView):
     model = Product
     template_name = "home.html"
-    context_object_name = "products" 
+    context_object_name = "products"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,7 +19,6 @@ class HomeView(ListView):
             published_at__isnull=False, status="active"
         ).order_by("-published_at")
 
-
         return context
 
 
@@ -27,25 +26,23 @@ class ProductsListView(ListView):
     model = Product
     template_name = "products.html"
     context_object_name = "products"
-    
+
     def get_queryset(self):
         query = super().get_queryset()
         query = Product.objects.filter(published_at__isnull=False, status="active")
         return query
-    
-    
+
+
 class ProductsListView(ListView):
     model = Product
     template_name = "products.html"
     context_object_name = "products"
     paginate_by = 6
-    
+
     def get_queryset(self):
         query = super().get_queryset()
         query = Product.objects.filter(published_at__isnull=False, status="active")
         return query
-
-
 
 
 class ProductDetailView(DetailView):
@@ -57,4 +54,35 @@ class ProductDetailView(DetailView):
         query = super().get_queryset()
         query = Product.objects.filter(published_at__isnull=False, status="active")
         return query
-    
+
+
+class CategoryListView(ListView):
+    model = Product
+    template_name = "products.html"
+    context_object_name = "products"
+    paginate_by = 6
+
+    def get_queryset(self):
+        query = super().get_queryset()
+        query = query.filter(
+            published_at__isnull=False,
+            status="active",
+            category__id=self.kwargs["cid"],
+        )
+        return query
+
+
+class TagListView(ListView):
+    model = Product
+    template_name = "products.html"
+    context_object_name = "products"
+    paginate_by = 6
+
+    def get_queryset(self):
+        query = super().get_queryset()
+        query = query.filter(
+            published_at__isnull=False,
+            status="active",
+            tag__id=self.kwargs["tid"],
+        )
+        return query
