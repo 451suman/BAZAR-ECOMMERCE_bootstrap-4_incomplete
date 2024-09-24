@@ -11,4 +11,7 @@ urlpatterns = [
    path("product-by-tag/<int:tid>/",views.TagListView.as_view(), name="product-by-tag"),
    path("all-categories/",views.CategoryViewListPage.as_view(), name="all-categories"),
    path("all-tags/",views.TagViewListPage.as_view(), name="all-tags"),
+   path("contact/", views.ContactView.as_view(), name="contact"),
+   path("signup/", views.SignupView.as_view(), name="signup"),
+   path("add-product/", views.AddProduct.as_view(), name="add-product"),
 ]

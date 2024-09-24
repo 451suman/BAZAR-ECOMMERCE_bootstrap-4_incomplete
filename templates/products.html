@@ -6,8 +6,12 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Category page</h1>
+                <h1>Products page</h1>
+                {% if request.user.is_superuser %}
                 
+                  <a class="genric-btn info circle large" href="{% url 'add-product' %}" A>Add Products</a>
+                
+                {% endif %}
             </div>
         </div>
     </div>
@@ -22,9 +26,6 @@
                 {% include "productsListPage/left/productfilters.html" %}
                 {% include "productsListPage/left/color.html" %}
                 {% include "productsListPage/left/price.html" %}
-                
-               
-               
             </div>
         </div>
 

@@ -3,22 +3,22 @@
 <html lang="zxx" class="no-js">
 
 <head>
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="{% static 'img/fav.png' %}">
-    <!-- Author Meta -->
-    <meta name="author" content="CodePixar">
-    <!-- Meta Description -->
-    <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
-    <!-- meta character set -->
-    <meta charset="UTF-8">
-    <!-- Site Title -->
-    <title>BAZAR</title>
-    <!-- CSS ============================================= -->
-    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>BAZAR</title>
+	<!-- CSS ============================================= -->
+	<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
 	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
@@ -32,14 +32,31 @@
 </head>
 
 <body>
-    {% include 'header.html' %}
+	{% include 'header.html' %}
 
-    {% block content %}
-    {% endblock %}
-    {% include 'footer.html' %}
-    <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js' %}" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
+	{% if messages %}
+	{% for message in messages %}
+	<div class="container">
+		<br><br><br><br><br><br>
+		<div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+			{{ message }}
+			{% if form.errors and form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+
+	{% block content %}
+	{% endblock %}
+	{% include 'footer.html' %}
+	<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js' %}"
+		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+		crossorigin="anonymous"></script>
 	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
 	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
 	<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>

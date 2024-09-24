@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Add Products</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    <strong>Please correct the following errors:</strong>
+    <ul>
+        {% for field in form %}
+        {% for error in field.errors %}
+        <li>{{ field.label }}: {{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+
+        {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="title" class="form-control" name="title" id="title" placeholder="Enter Title">
+            {{ form.title.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="title">Content</label>
+            {{ form.content }}
+            {{ form.content.errors }}
+
+        </div>
+        <div class="form-group">
+            <label for="title">Description</label>
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Featured Image</label>
+            <input type="file" class="form-control-file" name="featured_image" id="exampleFormControlFile1">
+        </div>
+       
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Status</label>
+            <br>
+            {{ form.status }}
+            {{ form.status.errors }}
+        </div>
+        <br>
+        <br>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">category</label>
+            <br>
+            <!-- <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select> -->
+            {{ form.category }}
+            {{ form.category.errors }}
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">tag</label>
+            <br>
+            <!-- <select multiple class="form-control" id="exampleFormControlSelect2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select> -->
+            {{ form.tag }}
+            {{ form.tag.errors }}
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="number" class="form-control" name="price" id="Price" placeholder="Enter Title">
+            {{ form.price.errors }}
+        </div>
+        <div class="form-group">
+        <button type="submit" class="genric-btn primary">Primary</button>
+    </div>
+    </form>
+</div>
+
+{% endblock content %}

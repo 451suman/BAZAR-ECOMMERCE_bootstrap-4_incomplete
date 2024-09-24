@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Login/Register</h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <img class="img-fluid" src="{% static 'img/login.jpg' %}" alt="">
+                    <div class="hover">
+                        <h4>Already have an Accountx?</h4>
+                        <a class="primary-btn" href="{% url 'login' %}">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h3>Signup</h3>
+                    <form class="row login_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="col-md-12 form-group">
+                            <!-- <label for="username">Username</label> -->
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                                {{form.username.errors}}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <!-- <label for="password1">Password</label> -->
+                            <input type="password" class="form-control" id="password1" name="password1"
+                                placeholder="Password" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Password'">
+                                {{form.password1.errors}}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <!-- <label for="password2">Confirm Password</label> -->
+                            <input type="password" class="form-control" id="password2" name="password2"
+                                placeholder="Confirm Password" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Confirm Password'">
+                                {{form.password2.errors}}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" class="primary-btn">Sign In</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->
+
+{% endblock content %}
