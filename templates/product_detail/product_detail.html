@@ -5,32 +5,38 @@
     <div class="container">
         <div class="row s_product_inner">
             <div class="col-lg-6">
-                <img class="img-fluid" src="{{product.featured_image.url}}" alt="">
-                
+                <img class="img-fluid" src="{{product.featured_image.url}}" alt="" />
             </div>
+
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                    <h3> {{ product.title }}</h3>
+                    {% if request.user.is_superuser %}
+                    <a href="#" class="btn btn-primary">Edit </a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                        data-target="#product_delete_modal">
+                        Delete
+                    </button>
+                    {%endif %}
+
+                    <h3>{{ product.title }}</h3>
                     <h2>Rs. {{product.price}}</h2>
                     <ul class="list">
-                        <li><a class="active" href="#"><span>Category</span> : {{ product.category }}</a></li>
-                        <li><a class="active" href="#"><span>Tags</span> : {{ product.tag.all|join:", "}}</a></li>
-                        <li><a href="#"><span>Availibility</span> : In Stock</a></li>
+                        <li>
+                            <a class="active" href="#"><span>Category</span> : {{ product.category }}</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#"><span>Tags</span> : {{ product.tag.all|join:", "}}</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="active"><span>In Stock</span> : {{product.stock}}</a>
+                        </li>
                     </ul>
                     <p>{{ product.content|safe }}</p>
                     <div class="product_count">
                         <label for="qty">Quantity:</label>
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                            class="input-text qty">
-                        <button
-                            onclick="var result = document.getElementById('sst'); var sst = result.value; 
-                            if( !isNaN( sst ))
-                             result.value++;return false;"
-                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                        <button
-                            onclick="var result = document.getElementById('sst'); var sst = result.value; 
-                            if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                        <input type="number" name="qty" id="sst" max="{{product.stock}}" value="1" title="Quantity:"
+                            class="input-text qty" />
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="primary-btn" href="#">Add to Cart</a>

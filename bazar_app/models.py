@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 class TimeStampModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -30,10 +30,13 @@ class Product(TimeStampModel):
     description = models.TextField()
     featured_image = models.ImageField(upload_to="post_images/%Y/%m/%d", blank=False)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="active")
-    published_at = models.DateTimeField(auto_now_add=True)
+    published_at = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tag = models.ManyToManyField(Tag)
     price = models.DecimalField(max_digits= 9999999, decimal_places=2, default=0.00)
+    stock = models.PositiveIntegerField()
+
+
 
     def __str__(self):
         return self.title

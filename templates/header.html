@@ -78,7 +78,11 @@
             </li>
             <!-- dropdown -->
 
-           
+            {% if request.user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add-product' %}" A>Add Products</a>
+            </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
@@ -96,18 +100,13 @@
             <li class="nav-item">
               <form action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-link">
+                <button type="submit" class="btn btn-link" style="padding: 0px !important;">
                   <span class="ti-lock"></span>
                 </button>
               </form>
             </li>
             
-            <li class="nav-item">
-              <div style="padding-top:40px">
-
-               Welcome @{{user.username}}
-              </div>
-            </li>
+         
           
             {% else %}
             <li class="nav-item">

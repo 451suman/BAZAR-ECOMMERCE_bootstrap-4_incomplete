@@ -2,7 +2,7 @@ from django.contrib import messages
 from winreg import CreateKey
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, TemplateView, View, DetailView, CreateView
+from django.views.generic import ListView, TemplateView, View, DetailView, CreateView, DeleteView
 
 from bazar_app.forms import AddProductForm, ContactForm
 from bazar_app.models import Category, Contact, Product, Tag
@@ -160,4 +160,11 @@ class AddProduct(LoginRequiredMixin, CreateView):
         return reverse_lazy("productdetail", kwargs={"pk": self.object.pk})
     
 
-       
+class ProductDeleteview(LoginRequiredMixin, DeleteView):
+    model = Product
+    success_url = reverse_lazy("product-lists")
+    # success_url: This attribute defines the URL to redirect to after the Post has been successfully deleted.
+
+    def form_valid(self, form):
+        messages.success(self.request, "product was Deleted Successfully")
+        return super().form_valid(form)
