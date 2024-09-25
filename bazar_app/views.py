@@ -2,7 +2,7 @@ from django.contrib import messages
 from winreg import CreateKey
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, TemplateView, View, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, TemplateView, View, DetailView, CreateView, DeleteView, UpdateView
 
 from bazar_app.forms import AddProductForm, ContactForm
 from bazar_app.models import Category, Contact, Product, Tag
@@ -35,7 +35,7 @@ class SignupView(View):
 
 class HomeView(ListView):
     model = Product
-    template_name = "home.html"
+    template_name = "home/home.html"
     context_object_name = "products"
 
     def get_context_data(self, **kwargs):
@@ -52,7 +52,7 @@ class HomeView(ListView):
 
 class ProductsListView(ListView):
     model = Product
-    template_name = "products.html"
+    template_name = "productsListPage/products.html"
     context_object_name = "products"
 
     def get_queryset(self):
@@ -63,7 +63,7 @@ class ProductsListView(ListView):
 
 class ProductsListView(ListView):
     model = Product
-    template_name = "products.html"
+    template_name = "productsListPage/products.html"
     context_object_name = "products"
     paginate_by = 6
 
@@ -75,7 +75,7 @@ class ProductsListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = "product_detail.html"
+    template_name = "product_detail_page/product_detail.html"
     context_object_name = "product"
 
     def get_queryset(self):
@@ -86,7 +86,7 @@ class ProductDetailView(DetailView):
 
 class CategoryListView(ListView):
     model = Product
-    template_name = "products.html"
+    template_name = "productsListPage/products.html"
     context_object_name = "products"
     paginate_by = 6
 
@@ -102,7 +102,7 @@ class CategoryListView(ListView):
 
 class TagListView(ListView):
     model = Product
-    template_name = "products.html"
+    template_name = "productsListPage/products.html"
     context_object_name = "products"
     paginate_by = 6
 
@@ -154,6 +154,19 @@ class AddProduct(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(self.request, "Product added successfully!")
+        return response
+    
+    def get_success_url(self):
+        return reverse_lazy("productdetail", kwargs={"pk": self.object.pk})
+    
+class ProductEditView(LoginRequiredMixin, UpdateView):
+    model = Product
+    template_name = "admin/product_crud/add_products.html"
+    form_class = AddProductForm
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Product Updated successfully!")
         return response
     
     def get_success_url(self):

@@ -4,13 +4,13 @@
         {% for category in categories %}
         <li class="main-nav-list">
             <a href="{% url 'product-by-category' category.id %}" >
-                <span class="lnr lnr-arrow-right"></span>{{ category.name }}<span class="number">({{ category.get_post_count }})</span>
+                <span class="lnr lnr-arrow-right"></span>{{ category.name }}<span class="number"></span>
             </a>
         </li>
         {% endfor %}
         <li class="main-nav-list">
             <a href="{% url 'all-categories' %}" >
-                <span class="lnr lnr-arrow-right"></span>All Category <span class="number">({{ category.get_Product_count }})</span>
+                <span class="lnr lnr-arrow-right"></span>All Category <span class="number"></span>
             </a>
         </li>
     </ul>
