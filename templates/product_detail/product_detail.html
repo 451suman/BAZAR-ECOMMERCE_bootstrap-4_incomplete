@@ -32,11 +32,12 @@
                             <a href="#" class="active"><span>In Stock</span> : {{product.stock}}</a>
                         </li>
                     </ul>
-                    <p>{{ product.content|safe }}</p>
+                    <hr>
+                    
                     <div class="product_count">
                         <label for="qty">Quantity:</label>
-                        <input type="number" name="qty" id="sst" max="{{product.stock}}" value="1" title="Quantity:"
-                            class="input-text qty" />
+                        <input type="number" name="qty" id="sst" max="{{product.stock}}" min="1" title="Quantity:"
+                            class="input-text qty"  required/>
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="primary-btn" href="#">Add to Cart</a>

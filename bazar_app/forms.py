@@ -14,7 +14,5 @@ class AddProductForm(forms.ModelForm):
         model = Product
         fields = "__all__"
         widgets = {
-            "content": SummernoteWidget(attrs={"class": "form-control"}),
             "description": SummernoteWidget(attrs={"class": "form-control"}),
         }
-
