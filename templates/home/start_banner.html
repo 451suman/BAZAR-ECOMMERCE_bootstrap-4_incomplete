@@ -15,8 +15,10 @@
 								</a>
 
 								<div class="add-bag d-flex align-items-center">
-									<a class="genric-btn primary circle" href="">View Details</a>
-									
+									<a class="genric-btn primary circle" href="{% url 'productdetail' banner.id %}">
+										View Details
+									</a>
+
 								</div>
 							</div>
 						</div>
@@ -26,7 +28,11 @@
 									<img class="img-fluid" src="{{ banner.featured_image.url }}"
 										style="aspect-ratio: 5 / 4; margin-top: 69px;" alt="">
 								</a>
-								<p class="text-center"><i class="ti-arrow-left"></i> Swipe <i class="ti-arrow-right"></i></p>
+								<p class="text-center">
+									<i class="ti-arrow-left"></i>
+									Swipe
+									<iclass="ti-arrow-right"></iclass=>
+								</p>
 
 							</div>
 						</div>
