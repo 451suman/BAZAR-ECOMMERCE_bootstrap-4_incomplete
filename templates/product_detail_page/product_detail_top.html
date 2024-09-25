@@ -10,6 +10,13 @@
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
+                    {% if request.user.is_superuser %}
+                    <a href="#" class="btn btn-primary">Edit </a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                        data-target="#product_delete_modal">
+                        Delete
+                    </button>
+                    {%endif %}
                     <h3> {{ product.title }}</h3>
                     <h2>Rs. {{product.price}}</h2>
                     <ul class="list">
